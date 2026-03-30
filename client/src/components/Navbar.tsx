@@ -1,7 +1,7 @@
 /*
- * DESIGN: "Midnight Counsel" — Glassmorphism sticky navbar
- * Glass: backdrop-blur + dark overlay + subtle border
- * Mobile: slide-out menu from right with overlay
+ * DESIGN: Light professional navbar with emerald accents
+ * White background, dark text, emerald CTA button
+ * Mobile: slide-out menu from right
  */
 import { useState, useEffect } from "react";
 import { Phone, Menu, X } from "lucide-react";
@@ -33,22 +33,22 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "glass shadow-lg shadow-black/30"
-            : "bg-transparent"
+            ? "bg-white shadow-md border-b border-gray-100"
+            : "bg-white/80 backdrop-blur-sm"
         }`}
       >
         <div className="container">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-lg shadow-emerald-500/30">
-                <span className="text-[#0B1120] font-black text-sm" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>TG</span>
+              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                <span className="text-white font-black text-sm" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>TG</span>
               </div>
               <div>
-                <p className="font-bold text-white leading-tight text-sm md:text-base" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                <p className="font-bold text-gray-900 leading-tight text-sm md:text-base" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                   TG Legacy Services
                 </p>
-                <p className="text-emerald-400 text-[10px] leading-tight" style={{ fontFamily: "'Outfit', sans-serif", letterSpacing: "0.1em" }}>
+                <p className="text-emerald-600 text-[10px] leading-tight" style={{ fontFamily: "'Outfit', sans-serif", letterSpacing: "0.1em" }}>
                   MOBILE NOTARY
                 </p>
               </div>
@@ -60,7 +60,7 @@ export default function Navbar() {
                 <button
                   key={link.label}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-slate-300 hover:text-emerald-400 transition-colors duration-200 text-sm font-medium"
+                  className="text-gray-700 hover:text-emerald-600 transition-colors duration-200 text-sm font-medium"
                   style={{ fontFamily: "'Outfit', sans-serif" }}
                 >
                   {link.label}
@@ -81,7 +81,7 @@ export default function Navbar() {
 
             {/* Mobile menu toggle */}
             <button
-              className="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+              className="md:hidden text-gray-900 p-2 rounded-lg hover:bg-gray-100 transition-colors"
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
             >
@@ -94,25 +94,24 @@ export default function Navbar() {
       {/* Mobile overlay */}
       {menuOpen && (
         <div
-          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm md:hidden"
           onClick={() => setMenuOpen(false)}
         />
       )}
 
       {/* Mobile slide-out menu */}
       <div
-        className={`fixed top-0 right-0 h-full w-72 z-50 md:hidden transition-transform duration-300 ease-out ${
+        className={`fixed top-0 right-0 h-full w-72 z-50 md:hidden transition-transform duration-300 ease-out bg-white shadow-lg ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
-        style={{ background: "#111827", borderLeft: "1px solid rgba(255,255,255,0.08)" }}
       >
-        <div className="flex items-center justify-between p-5 border-b border-white/10">
-          <span className="font-bold text-white text-sm" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+        <div className="flex items-center justify-between p-5 border-b border-gray-100">
+          <span className="font-bold text-gray-900 text-sm" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             TG Legacy Services
           </span>
           <button
             onClick={() => setMenuOpen(false)}
-            className="text-slate-400 hover:text-white p-1 rounded"
+            className="text-gray-500 hover:text-gray-900 p-1 rounded"
           >
             <X size={20} />
           </button>
@@ -122,13 +121,13 @@ export default function Navbar() {
             <button
               key={link.label}
               onClick={() => handleNavClick(link.href)}
-              className="text-left text-slate-300 hover:text-emerald-400 hover:bg-emerald-400/10 px-4 py-3 rounded-lg transition-all duration-200 font-medium"
+              className="text-left text-gray-700 hover:text-emerald-600 hover:bg-emerald-50 px-4 py-3 rounded-lg transition-all duration-200 font-medium"
               style={{ fontFamily: "'Outfit', sans-serif" }}
             >
               {link.label}
             </button>
           ))}
-          <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-3">
+          <div className="mt-4 pt-4 border-t border-gray-100 flex flex-col gap-3">
             <a
               href="tel:9136018371"
               className="btn-emerald flex items-center justify-center gap-2 py-3 rounded-lg text-sm"
@@ -139,7 +138,7 @@ export default function Navbar() {
             </a>
             <a
               href="mailto:info@tglegacyservices.com"
-              className="flex items-center justify-center gap-2 py-3 rounded-lg text-sm text-slate-300 border border-white/15 hover:border-emerald-400/50 hover:text-emerald-400 transition-all"
+              className="flex items-center justify-center gap-2 py-3 rounded-lg text-sm text-gray-700 border border-gray-300 hover:border-emerald-600 hover:text-emerald-600 transition-all"
               style={{ fontFamily: "'Outfit', sans-serif" }}
               onClick={() => setMenuOpen(false)}
             >
