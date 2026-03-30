@@ -178,17 +178,29 @@
     .service-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); flex-shrink: 0; }
 
     /* ─── AREAS ─── */
-    .areas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
-    .area-card {
+    .areas-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .areas-map-wrap {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow-lg); border: 1px solid var(--slate-300);
+      height: 440px;
+    }
+    .areas-map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+    .areas-info h3 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; color: var(--slate-800); margin-bottom: 0.5rem; }
+    .areas-info p { color: var(--slate-500); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem; }
+    .areas-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .areas-list li {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.85rem 1.25rem;
       background: var(--white); border: 1px solid var(--slate-300);
       border-left: 4px solid var(--emerald);
-      border-radius: var(--radius); padding: 1.25rem 1.5rem;
-      display: flex; align-items: center; gap: 0.75rem;
-      box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .area-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-    .area-card svg { color: var(--emerald); flex-shrink: 0; }
-    .area-card span { font-weight: 600; color: var(--slate-800); font-size: 0.95rem; }
+    .areas-list li:hover { transform: translateX(4px); box-shadow: var(--shadow-lg); }
+    .areas-list li .area-icon { width: 32px; height: 32px; background: var(--emerald-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .areas-list li .area-icon svg { color: var(--emerald-dark); }
+    .areas-list li .area-name { font-weight: 700; color: var(--slate-800); font-size: 0.95rem; }
+    .areas-list li .area-tag { margin-left: auto; font-size: 0.75rem; font-weight: 600; color: var(--emerald-dark); background: var(--emerald-light); padding: 0.2rem 0.6rem; border-radius: 999px; }
 
     /* ─── CONTACT ─── */
     .contact-bg { background: var(--slate-900); }
@@ -287,10 +299,12 @@
       .btn-primary, .btn-outline { justify-content: center; }
       section { padding: 3.5rem 0; }
       .services-grid { grid-template-columns: 1fr; }
-      .areas-grid { grid-template-columns: 1fr 1fr; }
+      .areas-layout { grid-template-columns: 1fr; }
+      .areas-map-wrap { height: 300px; }
     }
     @media (max-width: 480px) {
-      .areas-grid { grid-template-columns: 1fr; }
+      .areas-layout { grid-template-columns: 1fr; }
+      .areas-map-wrap { height: 260px; }
       .form-card { padding: 1.5rem; }
     }
   </style>
@@ -439,34 +453,56 @@
         <h2 class="section-title">Service Areas</h2>
         <p class="section-sub">We proudly serve Kansas City and the surrounding metro communities.</p>
       </div>
-      <div class="areas-grid">
-        <div class="area-card">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Kansas City, Missouri</span>
+      <div class="areas-layout">
+        <!-- Left: Embedded Map -->
+        <div class="areas-map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d196281.5!2d-94.5786!3d39.1155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="TG Legacy Services Service Area Map — Kansas City Metro"
+          ></iframe>
         </div>
-        <div class="area-card">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Liberty</span>
-        </div>
-        <div class="area-card">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Gladstone</span>
-        </div>
-        <div class="area-card">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Independence</span>
-        </div>
-        <div class="area-card">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Riverside</span>
-        </div>
-        <div class="area-card">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>North Kansas City</span>
-        </div>
-        <div class="area-card">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Parkville</span>
+        <!-- Right: Location List -->
+        <div class="areas-info">
+          <h3>Serving the Kansas City Metro</h3>
+          <p>We proudly provide mobile notary services throughout the <strong>Kansas City, Missouri</strong> metro area — coming directly to your home, office, hospital, or any preferred location.</p>
+          <ul class="areas-list">
+            <li>
+              <span class="area-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span class="area-name">Kansas City, Missouri</span>
+              <span class="area-tag">Primary</span>
+            </li>
+            <li>
+              <span class="area-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span class="area-name">Liberty</span>
+              <span class="area-tag">Served</span>
+            </li>
+            <li>
+              <span class="area-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span class="area-name">Gladstone</span>
+              <span class="area-tag">Served</span>
+            </li>
+            <li>
+              <span class="area-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span class="area-name">Independence</span>
+              <span class="area-tag">Served</span>
+            </li>
+            <li>
+              <span class="area-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span class="area-name">Riverside</span>
+              <span class="area-tag">Served</span>
+            </li>
+            <li>
+              <span class="area-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span class="area-name">North Kansas City</span>
+              <span class="area-tag">Served</span>
+            </li>
+            <li>
+              <span class="area-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span class="area-name">Parkville</span>
+              <span class="area-tag">Served</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
