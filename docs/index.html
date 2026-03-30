@@ -26,7 +26,8 @@
         .services { padding: 4rem 2rem; background: white; }
         .services h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; color: #1a1a1a; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .service-card { background: #f9fafb; padding: 2rem; border-radius: 0.75rem; border: 1px solid #e5e7eb; transition: transform 0.3s, box-shadow 0.3s; }
+        .service-card { background: #f9fafb; padding: 2rem; border-radius: 0.75rem; border: 1px solid #e5e7eb; transition: transform 0.3s, box-shadow 0.3s; overflow: hidden; }
+        .service-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; border-radius: 0.5rem; }
         .service-card:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
         .service-card h3 { color: #10B981; margin-bottom: 1rem; font-size: 1.5rem; }
         .service-card p { color: #666; line-height: 1.8; }
@@ -42,6 +43,8 @@
         .contact-item p { font-size: 1.1rem; color: #10B981; font-weight: 600; margin-bottom: 0.5rem; }
         .contact-item a { color: #1a1a1a; text-decoration: none; }
         .contact-item a:hover { color: #10B981; }
+        .qr-section { text-align: center; margin-bottom: 3rem; }
+        .qr-section img { max-width: 300px; height: auto; border-radius: 0.75rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .form-section { max-width: 500px; margin: 2rem auto; background: #f9fafb; padding: 2rem; border-radius: 0.75rem; }
         .form-section input, .form-section textarea { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #e5e7eb; border-radius: 0.5rem; font-family: 'Outfit', sans-serif; }
         .form-section button { width: 100%; background: #10B981; color: white; padding: 0.75rem; border: none; border-radius: 0.5rem; font-weight: 600; cursor: pointer; transition: background 0.3s; }
@@ -78,14 +81,17 @@
             <h2>Our Services</h2>
             <div class="services-grid">
                 <div class="service-card">
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663482235892/mnWrqo2QkdDrFegLqGD7mQ/notary-journal-professional_07f53cf1.png" alt="General Notary Services">
                     <h3>General Notary</h3>
                     <p>Document notarization, affidavits, acknowledgments, and all standard notary services. We handle all document types with professionalism and accuracy.</p>
                 </div>
                 <div class="service-card">
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663482235892/mnWrqo2QkdDrFegLqGD7mQ/notary-stamp-document_21b29246.png" alt="Mobile Notary Services">
                     <h3>Mobile Services</h3>
                     <p>We travel to your home, office, or preferred location. No need to leave your place. Convenient scheduling for your busy lifestyle.</p>
                 </div>
                 <div class="service-card">
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663482235892/mnWrqo2QkdDrFegLqGD7mQ/notary-stamp-document_21b29246.png" alt="Same-Day Service">
                     <h3>Same-Day Service</h3>
                     <p>Urgent notarization needs? We offer same-day service with quick turnaround times. Call us for availability.</p>
                 </div>
@@ -109,6 +115,9 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2>Get in Touch</h2>
+            <div class="qr-section">
+                <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663482235892/mnWrqo2QkdDrFegLqGD7mQ/qr-code-contact_7a03860e.png" alt="Contact QR Code">
+            </div>
             <div class="contact-info">
                 <div class="contact-item">
                     <p>📞 Phone</p>
